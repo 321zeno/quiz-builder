@@ -49,6 +49,9 @@ class TriviaServiceTest extends TestCase
         $this->triviaService = app()->make(TriviaService::class);
     }
 
+    /**
+     * @group quiz
+     */
     public function test_retriving_categories(): void
     {
         $categories = $this->triviaService->getCategories();
@@ -57,6 +60,9 @@ class TriviaServiceTest extends TestCase
         $this->assertEquals('Entertainment: Books', $categories[1]['name']);
     }
 
+    /**
+     * @group quiz
+     */
     public function test_getting_a_question(): void
     {
         $question = $this->triviaService->getQuestion([
@@ -65,10 +71,16 @@ class TriviaServiceTest extends TestCase
             'type' => 'multiple'
         ]);
 
-        $this->assertEquals('Entertainment: Television', $question['category']);
-        $this->assertEquals('multiple', $question['type']);
-        $this->assertEquals('hard', $question['difficulty']);
-        $this->assertEquals('Which of these Nickelodeon game shows aired first?', $question['question']);
-        $this->assertEquals('Double Dare', $question['correct_answer']);
+        $this->assertInstanceOf(\App\Services\Trivia\TriviaQuestionDTO::class, $question);
+        $this->assertEquals('Entertainment: Television', $question->category);
+        $this->assertEquals('multiple', $question->type);
+        $this->assertEquals('hard', $question->difficulty);
+        $this->assertEquals('Which of these Nickelodeon game shows aired first?', $question->question);
+        $this->assertEquals('Double Dare', $question->correctAnswer);
+        $this->assertEquals([
+            'Figure It Out',
+            'Nickelodeon GUTS',
+            'Legends of the Hidden Temple'
+        ], $question->incorrectAnswers);
     }
 }

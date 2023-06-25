@@ -31,6 +31,9 @@ class TriviaAPITest extends TestCase
         $this->triviaAPI = app()->make(TriviaAPI::class);
     }
 
+    /**
+     * @group quiz
+     */
     public function test_session_token_expiry(): void
     {
         Carbon::setTestNow(now());

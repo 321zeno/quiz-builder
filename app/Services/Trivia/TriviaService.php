@@ -15,11 +15,18 @@ class TriviaService
         return $this->triviaAPI->getCategories();
     }
 
-    public function getQuestion($params): array
+    public function getQuestion($params): TriviaQuestionDTO
     {
-        $params['amount'] = $params['amount'] ?? null;
         $questions = $this->triviaAPI->getQuestions($params);
+        $question = collect($questions['results'])->first();
 
-        return $questions['results'][0];
+        return new TriviaQuestionDTO(
+            $question['category'],
+            $question['type'],
+            $question['difficulty'],
+            $question['question'],
+            $question['correct_answer'],
+            $question['incorrect_answers'],
+        );
     }
 }
