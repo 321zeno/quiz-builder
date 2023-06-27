@@ -13,7 +13,12 @@ import { createApp } from 'vue';
  * to use in your application's views. An example is included for you.
  */
 
+import { createPinia } from 'pinia'
+
+
+const pinia = createPinia()
 const app = createApp({});
+app.use(pinia)
 
 import ExampleComponent from './components/ExampleComponent.vue';
 import Quizzes from './components/Quizzes.vue';
@@ -39,9 +44,5 @@ app.component('quiz-editor', QuizEditor);
  * an "id" attribute of "app". This element is included with the "auth"
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
-
-import { createPinia } from 'pinia'
-const pinia = createPinia()
-app.use(pinia)
 
 app.mount('#app');

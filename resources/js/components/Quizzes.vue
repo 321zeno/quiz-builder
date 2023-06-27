@@ -46,6 +46,19 @@ export default {
             this.loading = false;
         }
     },
+    methods: {
+        async remove(id) {
+            if (!confirm('Are you sure you want to delete this quiz?')) {
+                return;
+            }
+            try {
+                await axios.delete(`/json/quizzes/${id}`);
+                this.quizzes = this.quizzes.filter(quiz => quiz.id !== id);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+    },
     components: {
         Button
     }

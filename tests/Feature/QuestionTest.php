@@ -36,8 +36,8 @@ class QuestionTest extends TestCase
             type: 'multiple',
             difficulty: 'hard',
             question: 'What was the first game to feature Mario?',
-            correctAnswer: 'Donkey Kong',
-            incorrectAnswers: [
+            correct_answer: 'Donkey Kong',
+            incorrect_answers: [
                 'Super Mario Bros.',
                 'Mario Bros.',
                 'Donkey Kong Jr.',

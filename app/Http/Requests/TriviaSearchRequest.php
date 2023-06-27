@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class QuestionSearchRequest extends FormRequest
+class TriviaSearchRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,9 +22,9 @@ class QuestionSearchRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'params.category' => 'required|integer',
-            'params.difficulty' => 'required|string',
-            'params.type' => 'required|string',
+            'category' => 'nullable|integer',
+            'difficulty' => 'nullable|string',
+            'type' => 'nullable|string',
         ];
     }
 }

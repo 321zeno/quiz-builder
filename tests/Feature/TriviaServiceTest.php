@@ -78,11 +78,11 @@ class TriviaServiceTest extends TestCase
         $this->assertEquals('multiple', $question->type);
         $this->assertEquals('hard', $question->difficulty);
         $this->assertEquals('Which of these Nickelodeon game shows aired first?', $question->question);
-        $this->assertEquals('Double Dare', $question->correctAnswer);
+        $this->assertEquals('Double Dare', $question->correct_answer);
         $this->assertEquals([
             'Figure It Out',
             'Nickelodeon GUTS',
             'Legends of the Hidden Temple'
-        ], $question->incorrectAnswers);
+        ], $question->incorrect_answers);
     }
 }

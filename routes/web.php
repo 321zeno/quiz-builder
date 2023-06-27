@@ -30,10 +30,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('quiz/create', [QuizController::class, 'create'])->name('quiz.create');
+    Route::get('quiz/{id}/{format?}', [QuizController::class, 'edit'])->name('quiz.edit');
 });
 
 Route::middleware('auth')->prefix('json')->group(function () {
     Route::get('quizzes', [QuizController::class, 'index'])->name('quizzes.index');
+    Route::post('quizzes', [QuizController::class, 'store'])->name('quizzes.store');
+    Route::delete('quizzes/{id}', [QuizController::class, 'destroy'])->name('quizzes.destroy');
 
     Route::get('trivia/categories', [TriviaController::class, 'categories'])->name('trivia.categories');
     Route::post('trivia/search', [TriviaController::class, 'search'])->name('trivia.search');

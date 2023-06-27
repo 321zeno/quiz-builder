@@ -32,7 +32,7 @@ class QuizTest extends TestCase
         $questions = Question::factory()->count(2)->make();
 
         $quiz = $user->quizzes()->create([
-            'name' => 'Test Quiz',
+            'title' => 'Test Quiz',
             'description' => 'Test Quiz Description',
         ]);
         $quiz->questions()->saveMany($questions);

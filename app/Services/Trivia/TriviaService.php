@@ -22,12 +22,12 @@ class TriviaService
         $question = collect($questions['results'])->first();
 
         return new TriviaQuestionDTO(
-            $question['category'],
+            urldecode($question['category']),
             $question['type'],
             $question['difficulty'],
-            $question['question'],
-            $question['correct_answer'],
-            $question['incorrect_answers'],
+            urldecode($question['question']),
+            urldecode($question['correct_answer']),
+            array_map(fn ($answer) => urldecode($answer), $question['incorrect_answers'])
         );
     }
 }

@@ -9,8 +9,8 @@ class TriviaQuestionDTO
         public string $type,
         public string $difficulty,
         public string $question,
-        public string $correctAnswer,
-        public array $incorrectAnswers,
+        public string $correct_answer,
+        public array $incorrect_answers,
     )
     {
         //

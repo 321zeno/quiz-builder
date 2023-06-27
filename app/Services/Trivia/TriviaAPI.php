@@ -4,11 +4,12 @@ namespace App\Services\Trivia;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
-use InvalidArgumentException;
 
 final class TriviaAPI
 {
-    private static $host = 'https://opentdb.com/';
+    private const ENCODING = 'url3986';
+
+    private const HOST = 'https://opentdb.com/';
 
     private ?string $sessionToken = null;
 
@@ -19,7 +20,7 @@ final class TriviaAPI
      */
     public function requestSessionToken(): string
     {
-        $response = Http::get(self::$host . 'api_token.php', [
+        $response = Http::get(static::HOST . 'api_token.php', [
             'command' => 'request'
         ])->json();
 
@@ -50,7 +51,7 @@ final class TriviaAPI
 
     public function getCategories(): array
     {
-        return Http::get(self::$host . 'api_category.php')->json();
+        return Http::get(static::HOST . 'api_category.php')->json();
     }
 
     public function getQuestions($params): array
@@ -61,7 +62,8 @@ final class TriviaAPI
         $params['type'] = $params['type'] ?? null;
 
         $params['token'] = $this->useSessionToken();
+        $params['encode'] = static::ENCODING;
 
-        return Http::get(self::$host . 'api.php', array_filter($params))->json();
+        return Http::get(static::HOST . 'api.php', array_filter($params))->json();
     }
 }

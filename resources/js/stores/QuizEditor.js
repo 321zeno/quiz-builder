@@ -1,8 +1,13 @@
-export const useQuizStore = defineStore('quiz', {
+import { defineStore } from 'pinia'
+
+export const useQuizEditorStore = defineStore('quiz', {
     state: () => ({
-        title: '',
-        description: '',
-        questions: [],
+        quiz: {
+            id: null,
+            title: '',
+            description: '',
+            questions: [],
+        }
     }),
     actions: {
         addQuestion(question) {

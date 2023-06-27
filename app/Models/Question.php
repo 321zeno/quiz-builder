@@ -35,8 +35,8 @@ class Question extends Model
             'type' => $triviaQuestion->type,
             'difficulty' => $triviaQuestion->difficulty,
             'question' => $triviaQuestion->question,
-            'correct_answer' => $triviaQuestion->correctAnswer,
-            'incorrect_answers' => $triviaQuestion->incorrectAnswers,
+            'correct_answer' => $triviaQuestion->correct_answer,
+            'incorrect_answers' => $triviaQuestion->incorrect_answers,
         ]);
     }
 

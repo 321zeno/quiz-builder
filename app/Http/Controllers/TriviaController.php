@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
 use App\Services\Trivia\TriviaService;
-use App\Http\Requests\QuestionSearchRequest;
+use App\Http\Requests\TriviaSearchRequest;
 
 class TriviaController extends Controller
 {
@@ -12,10 +12,9 @@ class TriviaController extends Controller
     {
     }
 
-    public function search(QuestionSearchRequest $request): JsonResponse
+    public function search(TriviaSearchRequest $request): JsonResponse
     {
-        $input = $request->validated();
-        $params = array_filter($input['params']);
+        $params = array_filter($request->validated());
         $question = $this->triviaService->getQuestion($params);
 
         return response()->json($question);
