@@ -17,8 +17,10 @@ const app = createApp({});
 
 import ExampleComponent from './components/ExampleComponent.vue';
 import Quizzes from './components/Quizzes.vue';
+import QuizEditor from './components/QuizEditor.vue';
 app.component('example-component', ExampleComponent);
 app.component('quizzes', Quizzes);
+app.component('quiz-editor', QuizEditor);
 
 /**
  * The following block of code may be used to automatically register your
@@ -37,5 +39,9 @@ app.component('quizzes', Quizzes);
  * an "id" attribute of "app". This element is included with the "auth"
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
+
+import { createPinia } from 'pinia'
+const pinia = createPinia()
+app.use(pinia)
 
 app.mount('#app');

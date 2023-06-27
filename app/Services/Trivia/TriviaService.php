@@ -12,11 +12,12 @@ class TriviaService
 
     public function getCategories(): array
     {
-        return $this->triviaAPI->getCategories();
+        return $this->triviaAPI->getCategories()['trivia_categories'];
     }
 
     public function getQuestion($params): TriviaQuestionDTO
     {
+        $params['amount'] = 1;
         $questions = $this->triviaAPI->getQuestions($params);
         $question = collect($questions['results'])->first();
 

@@ -22,6 +22,7 @@
     },
     "dependencies": {
         "flowbite": "^1.6.6",
-        "flowbite-vue": "^0.0.14"
+        "flowbite-vue": "^0.0.14",
+        "pinia": "^2.1.4"
     }
 }

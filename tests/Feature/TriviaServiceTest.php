@@ -17,13 +17,15 @@ class TriviaServiceTest extends TestCase
 
         Http::fake([
             'https://opentdb.com/api_category.php' => Http::response([
-                [
-                    'id' => 9,
-                    'name' => 'General Knowledge'
-                ],
-                [
-                    'id' => 10,
-                    'name' => 'Entertainment: Books'
+                'trivia_categories' => [
+                    [
+                        'id' => 9,
+                        'name' => 'General Knowledge'
+                    ],
+                    [
+                        'id' => 10,
+                        'name' => 'Entertainment: Books'
+                    ]
                 ]
             ], 200),
 
